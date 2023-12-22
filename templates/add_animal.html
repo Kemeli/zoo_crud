@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Animal</title>
+	<link rel="stylesheet" type="text/css" href="static/add.css">
+</head>
+<body>
+	<h2>Add Animal</h2>
+	<form action="/adicionar_animal" method="POST">
+		<label for="species">Species:</label>
+		<select name="species" id="species">
+			{% for specie in species_list %}
+				<option value="{{ specie }}">{{ specie }}</option>
+			{% endfor %}
+		</select><br>
+
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" required><br>
+
+		<label for="age">Age:</label>
+		<input type="number" name="age" id="age" required><br>
+
+		<label for="animal_type">Animal Type:</label>
+		<input type="text" name="animal_type" id="animal_type" required><br>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

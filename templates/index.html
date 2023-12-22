@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animal Management System</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="static/script.js"></script>
+</head>
+<body>
+	<h1>Animal Management System</h1>
+	<button onclick="addSpecie()">Add Species</button>
+	<button onclick="addAnimal()">Add Animal</button>
+	<button onclick="updateAnimal()">Update Animal</button>
+	<button onclick="searchAnimal()">Search Animal/Species</button>
+	<button onclick="showStats()">Statistics</button>
+	<table id="animalTable">
+	</table>
+
+	<script>
+		function addAnimal() {
+			window.location.href = '/adicionar_animal';
+		}
+		function addSpecie() {
+			window.location.href = '/adicionar_especie';
+		}
+
+		function updateAnimal() {
+			window.location.href = '/atualizar_animal';
+		}
+
+		$(document).ready(function() {
+			$.ajax({
+				url: '/get_animals',
+				type: 'GET',
+				success: function(data) {
+					var table = $('#animalTable');
+					data.forEach(function(row) {
+						var html = '<tr>';
+						for(var i=0; i<row.length; i++) {
+							html += '<td>' + row[i] + '</td>';
+						}
+						html += '</tr>';
+						table.append(html);
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>

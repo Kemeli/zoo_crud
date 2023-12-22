@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atualizar Animal</title>
+    <link rel="stylesheet" type="text/css" href="static/add.css">
+</head>
+<body>
+    <h2>Atualizar Animal</h2>
+    <form action="/atualizar_animal" method="POST">
+        <label for="animal">Select Animal:</label>
+        <select name="animal" id="animal">
+            {% for animal in animal_list %}
+                <option value="{{ animal }} ">{{ animal }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age"><br>
+
+        <label for="animal_type">Animal Type:</label>
+        <input type="text" name="animal_type" id="animal_type"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+	<script>
+		if ("{{ message }}" != ""){
+			alert("{{ message }}")
+		}
+	</script>
+</body>
+</html>
